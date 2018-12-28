@@ -31,22 +31,35 @@ namespace NeuralNetwork
     public class FiringNeuron
     {
         private Neuron _neuron;
+        private static readonly double learningRate = 0.02;
+        public double TotalInput;
+
         public FiringNeuron(Neuron neuron)
         {
             _neuron = neuron;
         }
         public double Fire(double input1, double input2)
         {
-            var totalInput = input1 * _neuron.InputWeight1 +
+            TotalInput = input1 * _neuron.InputWeight1 +
                 input2 * _neuron.InputWeight2 +
                 _neuron.Bias;
 
-            var output = totalInput > 0 ? totalInput : 0; //ReLu
+            var output = TotalInput > 0 ? TotalInput : TotalInput / 100; //ReLu
             return output;
         }
-        public double Learn()
+        public void Learn(double input1, double input2, double desiredOutput)
         {
-            return 0.0;
+            var output = Fire(input1, input2);
+
+            double outputVotes = desiredOutput - output;
+
+            double slopeOfRelu = TotalInput >= 0 ? 1 : 0.01;
+            double inputVotes = outputVotes * slopeOfRelu;
+
+            var adjustment = inputVotes * learningRate;
+            _neuron.Bias += adjustment;
+            _neuron.InputWeight1 += adjustment * input1;
+            _neuron.InputWeight2 += adjustment * input2;
         }
 
     }
