@@ -1,12 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NeuralNetwork
 {
     class Program
     {
+        private static readonly int totalSamples = 1000;
+        private static readonly double learningRate = 0.02;
+
         static void Main(string[] args)
         {
+            var testData = TestDataGenerator.GenerateNANDTestData(totalSamples);
+            for (int i = 0; i < 10; i++)
+            {
+                var dataPoint = testData[i];
+                Console.WriteLine(dataPoint);
+            }
+            
+            var trainingSet = testData.Take(totalSamples/3);
+            var testingSet = testData.Skip(totalSamples/3);
+
             var neuron = new Neuron();
             var firingNeuron = new FiringNeuron(neuron);
             var result = firingNeuron.Fire(.1,.1);
@@ -14,23 +28,5 @@ namespace NeuralNetwork
             Console.ReadLine();
         }
 
-        public static List<DataPoint> GenerateTestData(int size)
-        {
-            var r = new Random();
-            bool input1 = r.Next(0,2) >= 1;
-            bool input2 = r.Next(0,2) >= 1;
-            var result = new DataPoint()
-            {
-                Input1 = (double)input1,
-                Input2 = (double)input2,
-                Output = (double) !(input1 | input2)
-            }
-        }
-    }
-    public class DataPoint
-    {
-        public double Input1;
-        public double Input2;
-        public double Output;
     }
 }

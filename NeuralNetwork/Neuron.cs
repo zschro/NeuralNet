@@ -44,7 +44,10 @@ namespace NeuralNetwork
             var output = totalInput > 0 ? totalInput : 0; //ReLu
             return output;
         }
-        //learn -> 
+        public double Learn()
+        {
+            return 0.0;
+        }
 
     }
 }
