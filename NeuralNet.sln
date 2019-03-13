@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.136
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28621.142
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SingleNeuron", "NeuralNetwork\SingleNeuron.csproj", "{DFC111DA-7786-4439-AA21-6230FAC842C5}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeuralNet", "NeuralNet\NeuralNet.csproj", "{6BCB3BCE-4203-4781-B800-B3D460C5F866}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SingleNeuron", "SingleNeuron\SingleNeuron.csproj", "{6317C380-2730-434C-828B-75F1AF7AA652}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeuralNetWeb", "NeuralNetWeb\NeuralNetWeb.csproj", "{726CA1D8-B2A2-43E1-AB9A-91C2C86A4F6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DFC111DA-7786-4439-AA21-6230FAC842C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DFC111DA-7786-4439-AA21-6230FAC842C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DFC111DA-7786-4439-AA21-6230FAC842C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DFC111DA-7786-4439-AA21-6230FAC842C5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6BCB3BCE-4203-4781-B800-B3D460C5F866}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6BCB3BCE-4203-4781-B800-B3D460C5F866}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BCB3BCE-4203-4781-B800-B3D460C5F866}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BCB3BCE-4203-4781-B800-B3D460C5F866}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6317C380-2730-434C-828B-75F1AF7AA652}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6317C380-2730-434C-828B-75F1AF7AA652}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6317C380-2730-434C-828B-75F1AF7AA652}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6317C380-2730-434C-828B-75F1AF7AA652}.Release|Any CPU.Build.0 = Release|Any CPU
+		{726CA1D8-B2A2-43E1-AB9A-91C2C86A4F6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{726CA1D8-B2A2-43E1-AB9A-91C2C86A4F6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{726CA1D8-B2A2-43E1-AB9A-91C2C86A4F6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{726CA1D8-B2A2-43E1-AB9A-91C2C86A4F6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
