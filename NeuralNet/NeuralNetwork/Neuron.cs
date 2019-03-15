@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace NeuralNet.NeuralNetwork
+namespace NeuralNet
 {
     public class Neuron
     {

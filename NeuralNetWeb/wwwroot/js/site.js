@@ -49,7 +49,7 @@ function draw(currentPosition) {
 }
 
 
-function identify() {
+function identify() {  
     var dataURL = canvas.toDataURL(); // data:image/png;base64,BASE64DATAHERE
     var requestData = {
         ImageType: dataURL.substring(dataURL.indexOf(':') + 1, dataURL.indexOf(';')), // extracts 'image/png' or 'image/jpeg'
