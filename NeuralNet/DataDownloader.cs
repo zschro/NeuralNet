@@ -14,14 +14,30 @@ namespace NeuralNet
             var result = new List<FileInfo>();
             using (var client = new WebClient())
             {
-                if(!File.Exists($"{Directory.GetCurrentDirectory()}/train-images-idx3-ubyte.gz"))
+                if (!File.Exists($"{Directory.GetCurrentDirectory()}/train-images-idx3-ubyte.gz"))
+                {
+                    Console.WriteLine("Downloading");
                     client.DownloadFile("http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz", "train-images-idx3-ubyte.gz");
+                }
+                    
                 if (!File.Exists($"{Directory.GetCurrentDirectory()}/train-labels-idx1-ubyte.gz"))
+                {
+                    Console.WriteLine("Downloading");
                     client.DownloadFile("http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz", "train-labels-idx1-ubyte.gz");
+                }
+                    
                 if (!File.Exists($"{Directory.GetCurrentDirectory()}/t10k-images-idx3-ubyte.gz"))
+                {
+                    Console.WriteLine("Downloading");
                     client.DownloadFile("http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz", "t10k-images-idx3-ubyte.gz");
+                }
+                    
                 if (!File.Exists($"{Directory.GetCurrentDirectory()}/t10k-labels-idx1-ubyte.gz"))
+                {
+                    Console.WriteLine("Downloading");
                     client.DownloadFile("http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz", "t10k-labels-idx1-ubyte.gz");
+                }
+                    
                 foreach (FileInfo fileToDecompress in new DirectoryInfo(Directory.GetCurrentDirectory()).GetFiles("*.gz"))
                 {
                     result.Add(Decompress(fileToDecompress));
@@ -33,6 +49,10 @@ namespace NeuralNet
         {
             string currentFileName = fileToDecompress.FullName;
             string newFileName = currentFileName.Remove(currentFileName.Length - fileToDecompress.Extension.Length);
+            if (File.Exists(newFileName))
+            {
+                return new FileInfo(newFileName);
+            }
 
             using (FileStream originalFileStream = fileToDecompress.OpenRead())
             {

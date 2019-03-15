@@ -5,17 +5,17 @@ using System.Text;
 
 namespace NeuralNet
 {
-    public class DataSet
+    public class DataLoader
     {
-        public List<ImageModel> Images { get; private set; }
-        public DataSet(FileInfo sourceImages, FileInfo sourceLabels)
+        public List<HandwrittenDigitInfo> LoadDataSetFromIdxFiles(FileInfo sourceImages, FileInfo sourceLabels)
         {
-            Images = new List<ImageModel>();
-            LoadImages(sourceImages);
-            LoadLabels(sourceLabels);
+            var digits = new List<HandwrittenDigitInfo>();
+            digits = LoadImagesIntoDigitList(sourceImages, digits);
+            digits = LoadLabelsIntoDigitList(sourceLabels, digits);
+            return digits;
         }
 
-        private void LoadLabels(FileInfo sourceLabels)
+        private List<HandwrittenDigitInfo> LoadLabelsIntoDigitList(FileInfo sourceLabels, List<HandwrittenDigitInfo> digits)
         {
             using (FileStream sourceImagesStream = sourceLabels.OpenRead())
             {
@@ -29,12 +29,13 @@ namespace NeuralNet
                 for (int labelIndex = 0; labelIndex < numberOfLabels; labelIndex++)
                 {
                     var label = sourceImagesStream.ReadByte();
-                    Images[labelIndex].Label = label;
+                    digits[labelIndex].Label = label;
                 }
             }
+            return digits;
         }
 
-        private void LoadImages(FileInfo sourceImages)
+        private List<HandwrittenDigitInfo> LoadImagesIntoDigitList(FileInfo sourceImages, List<HandwrittenDigitInfo> digits)
         {
             using (FileStream sourceImagesStream = sourceImages.OpenRead())
             {
@@ -53,9 +54,10 @@ namespace NeuralNet
                 {
                     var pixelData = new byte[numberOfBytes];
                     sourceImagesStream.Read(pixelData, 0, numberOfBytes);
-                    Images.Add(new ImageModel() {PixelData = pixelData });
+                    digits.Add(new HandwrittenDigitInfo() {PixelData = pixelData });
                 }
             }
+            return digits;
         }
         
         private int ReadInt32(FileStream fileStream)

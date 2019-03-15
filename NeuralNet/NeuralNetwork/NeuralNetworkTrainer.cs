@@ -4,9 +4,7 @@ using System.Text;
 
 namespace NeuralNet
 {
-    public class ImageModel
+    public class NeuralNetworkTrainer
     {
-        public byte[] PixelData;
-        public int Label;
     }
 }
